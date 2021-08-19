@@ -33,9 +33,8 @@ class ViewController: UIViewController {
         UIColor(red: 0.22, green: 0.15, blue: 0.57, alpha: 1.0).cgColor,
         UIColor(red: 0.17, green: 0.13, blue: 0.37, alpha: 1.0).cgColor,
         UIColor(red: 0.14, green: 0.11, blue: 0.31, alpha: 1.0).cgColor]
-    static let defaults = UserDefaults.standard
+    static var defaults = UserDefaults.standard
     override func viewDidLoad() {
-       
         super.viewDidLoad()
         let get_str = ViewController.defaults.string(forKey: "valute")
         let my_text:String = get_str == nil ? "EUR" : get_str!
@@ -88,29 +87,31 @@ class ViewController: UIViewController {
         scroll.isHidden = false
     }
     
-
+    var x = AppDelegate()
     @IBAction func RUR(_ sender: Any) {
         valute = "RUB"
         label1.change_text(text: "RUB")
         label1.change_text2(text: "Российский рубль")
         label_scroll.subviews.forEach({ $0.removeFromSuperview() })
-        h_scroll.constant = 0
         label_scroll.y = 0
         label1.change_image(text: "RUB")
         scroll.isHidden = true
-        viewDidLoad()
         ViewController.defaults.set(valute, forKey: "valute")
+        x.repeat_action()
+        label_scroll.paste_all(all: AppDelegate.all)
     }
+
     @IBAction func USD(_ sender: Any) {
         valute = "USD"
         label1.change_text(text: "USD")
         label1.change_text2(text: "Доллар США")
         label_scroll.subviews.forEach({ $0.removeFromSuperview() })
-        h_scroll.constant = 0
         label_scroll.y = 0
         label1.change_image(text: "USD")
         scroll.isHidden = true
         ViewController.defaults.set(valute, forKey: "valute")
+        x.repeat_action()
+        label_scroll.paste_all(all: AppDelegate.all)
     }
     
     @IBAction func JPY(_ sender: Any) {
@@ -118,22 +119,24 @@ class ViewController: UIViewController {
         label1.change_text(text: "JPY")
         label1.change_text2(text: "Японская иена")
         label_scroll.subviews.forEach({ $0.removeFromSuperview() })
-        h_scroll.constant = 0
         label_scroll.y = 0
         label1.change_image(text: "JPY")
         scroll.isHidden = true
         ViewController.defaults.set(valute, forKey: "valute")
+        x.repeat_action()
+        label_scroll.paste_all(all: AppDelegate.all)
     }
     @IBAction func EUR(_ sender: Any) {
         valute = "EUR"
         label1.change_text(text: "EUR")
         label1.change_text2(text: "Евро")
         label_scroll.subviews.forEach({ $0.removeFromSuperview() })
-        h_scroll.constant = 0
         label_scroll.y = 0
         label1.change_image(text: "EUR")
         scroll.isHidden = true
         ViewController.defaults.set(valute, forKey: "valute")
+        x.repeat_action()
+        label_scroll.paste_all(all: AppDelegate.all)
     }
     
     @IBAction func AUD(_ sender: Any) {
@@ -141,94 +144,102 @@ class ViewController: UIViewController {
         label1.change_text(text: "AUD")
         label1.change_text2(text: "Австралийский доллар")
         label_scroll.subviews.forEach({ $0.removeFromSuperview() })
-        h_scroll.constant = 0
         label_scroll.y = 0
         label1.change_image(text: "AUD")
         scroll.isHidden = true
         ViewController.defaults.set(valute, forKey: "valute")
+        x.repeat_action()
+        label_scroll.paste_all(all: AppDelegate.all)
     }
     @IBAction func CAD(_ sender: Any) {
         valute = "CAD"
         label1.change_text(text: "CAD")
         label1.change_text2(text: "Канадский доллар")
         label_scroll.subviews.forEach({ $0.removeFromSuperview() })
-        h_scroll.constant = 0
         label_scroll.y = 0
         label1.change_image(text: "CAD")
         scroll.isHidden = true
         ViewController.defaults.set(valute, forKey: "valute")
+        x.repeat_action()
+        label_scroll.paste_all(all: AppDelegate.all)
     }
     @IBAction func CHF(_ sender: Any) {
         valute = "CHF"
         label1.change_text(text: "CHF")
         label1.change_text2(text: "Швейцарский франк")
         label_scroll.subviews.forEach({ $0.removeFromSuperview() })
-        h_scroll.constant = 0
         label_scroll.y = 0
         label1.change_image(text: "CHF")
         scroll.isHidden = true
         ViewController.defaults.set(valute, forKey: "valute")
+        x.repeat_action()
+        label_scroll.paste_all(all: AppDelegate.all)
     }
     @IBAction func CNY(_ sender: Any) {
         valute = "CNY"
         label1.change_text(text: "CNY")
         label1.change_text2(text: "Китайский юань")
         label_scroll.subviews.forEach({ $0.removeFromSuperview() })
-        h_scroll.constant = 0
         label_scroll.y = 0
         label1.change_image(text: "CNY")
         scroll.isHidden = true
         ViewController.defaults.set(valute, forKey: "valute")
+        x.repeat_action()
+        label_scroll.paste_all(all: AppDelegate.all)
     }
     @IBAction func CZK(_ sender: Any) {
         valute = "CZK"
         label1.change_text(text: "CZK")
         label1.change_text2(text: "Чешская крона")
         label_scroll.subviews.forEach({ $0.removeFromSuperview() })
-        h_scroll.constant = 0
         label_scroll.y = 0
         label1.change_image(text: "CZK")
         scroll.isHidden = true
         ViewController.defaults.set(valute, forKey: "valute")
+        x.repeat_action()
+        label_scroll.paste_all(all: AppDelegate.all)
     }
     @IBAction func GBP(_ sender: Any) {
         valute = "GBP"
         label1.change_text(text: "GBP")
         label1.change_text2(text: "Фунт стерлингов")
         label_scroll.subviews.forEach({ $0.removeFromSuperview() })
-        h_scroll.constant = 0
         label_scroll.y = 0
         label1.change_image(text: "GBP")
         scroll.isHidden = true
         ViewController.defaults.set(valute, forKey: "valute")
+        x.repeat_action()
+        label_scroll.paste_all(all: AppDelegate.all)
     }
     @IBAction func NOK(_ sender: Any) {
         valute = "NOK"
         label1.change_text(text: "NOK")
         label1.change_text2(text: "Норвежская крона")
         label_scroll.subviews.forEach({ $0.removeFromSuperview() })
-        h_scroll.constant = 0
         label_scroll.y = 0
         label1.change_image(text: "NOK")
         scroll.isHidden = true
         ViewController.defaults.set(valute, forKey: "valute")
+        x.repeat_action()
+        label_scroll.paste_all(all: AppDelegate.all)
     }
     @IBAction func SEK(_ sender: Any) {
         valute = "SEK"
         label1.change_text(text: "SEK")
         label1.change_text2(text: "Шведская крона")
         label_scroll.subviews.forEach({ $0.removeFromSuperview() })
-        h_scroll.constant = 0
         label_scroll.y = 0
         label1.change_image(text: "SEK")
         scroll.isHidden = true
         ViewController.defaults.set(valute, forKey: "valute")
+        x.repeat_action()
+        label_scroll.paste_all(all: AppDelegate.all)
     }
     @IBAction func plus(_ sender: Any) {
         scroll2.isHidden = false
     }
     
-    @IBAction func add_rur(_ sender: UIButton) {
+    /*@IBAction func add_rur(_ sender: UIButton) {
         scroll2.isHidden = true
         label_scroll.addlabel(val1: valute, name_val: sender.currentTitle!)
         h_scroll.constant += 100
@@ -304,7 +315,7 @@ class ViewController: UIViewController {
         label_scroll.addlabel(val1: valute, name_val: sender.currentTitle!)
         h_scroll.constant += 100
         scroll.isHidden = true
-    }
+    }*/
 }
 /*extension ViewController{
     override func encodeRestorableState(with coder: NSCoder) {

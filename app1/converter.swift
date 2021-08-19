@@ -47,7 +47,7 @@ class convert: UIViewController{
             self.x = self.x + String(sender.tag)
             self.money = Double(self.x)!
             width_label.constant += 10
-            converter_string = find_quotes_convertor(val1: valute1, val2: valute2, count: self.money)
+            converter_string = count_value(count: money)
             Button2.label_converted.text = converter_string.replacingOccurrences(of: ".", with: ",")
             Button2.width = Float(converter_string.count) * 10 + 100
             if let constraint = (Button2.contentView.constraints.filter{$0.firstAttribute == .width}.first) {
@@ -63,7 +63,7 @@ class convert: UIViewController{
                 label_1.text = String(sender.tag)
                 self.x = self.x + String(sender.tag)
                 self.money = Double(self.x)!
-                converter_string = find_quotes_convertor(val1: valute1, val2: valute2, count: self.money)
+                converter_string = count_value(count: money)
                 Button2.label_converted.text = converter_string.replacingOccurrences(of: ".", with: ",")
                 Button2.width = Float(converter_string.count) * 10 + 100
                 if let constraint = (Button2.contentView.constraints.filter{$0.firstAttribute == .width}.first) {
@@ -75,7 +75,7 @@ class convert: UIViewController{
             self.x = self.x + String(sender.tag)
             self.money = Double(self.x)!
             width_label.constant += 10
-            converter_string = find_quotes_convertor(val1: valute1, val2: valute2, count: self.money)
+            converter_string = count_value(count: money)
             Button2.label_converted.text = converter_string.replacingOccurrences(of: ".", with: ",")
             Button2.width = Float(converter_string.count) * 10 + 100
             if let constraint = (Button2.contentView.constraints.filter{$0.firstAttribute == .width}.first) {
@@ -180,17 +180,19 @@ class convert: UIViewController{
         self.s_name.text = val
     }
     func update_cost(){
-        converter_string = find_quotes_convertor(val1: valute1, val2: valute2, count: self.money)
+        converter_string = count_value(count: money)
         Button2.label_converted.text = converter_string.replacingOccurrences(of: ".", with: ",")
     }
+    var App = AppDelegate()
     @IBAction func add_rur(_ sender: Any) {
         self.valute1 = "RUB"
         self.flag1.image = UIImage(named: self.valute1)
         button_1.change_text(text: "RUB")
         button_1.change_text2(text: "Российский рубль")
         Scroll1.isHidden = true
-        update_cost()
         convert.defaults.set(valute1, forKey: "valute1")
+        App.replace_valutes()
+        update_cost()
     }
     
     @IBAction func add_jpy(_ sender: Any) {
@@ -199,8 +201,9 @@ class convert: UIViewController{
         Scroll1.isHidden = true
         button_1.change_text(text: "JPY")
         button_1.change_text2(text: "Японская иена")
-        update_cost()
         convert.defaults.set(valute1, forKey: "valute1")
+        App.replace_valutes()
+        update_cost()
     }
     
     @IBAction func add_usd(_ sender: UIButton) {
@@ -210,8 +213,9 @@ class convert: UIViewController{
         button_1.change_text(text: "USD")
         button_1.change_text2(text: "Американский доллар")
         Scroll1.isHidden = true
-        update_cost()
         convert.defaults.set(valute1, forKey: "valute1")
+        App.replace_valutes()
+        update_cost()
     }
     
     @IBAction func add_eur(_ sender: UIButton) {
@@ -220,8 +224,9 @@ class convert: UIViewController{
         button_1.change_text(text: "EUR")
         button_1.change_text2(text: "Евро")
         Scroll1.isHidden = true
-        update_cost()
         convert.defaults.set(valute1, forKey: "valute1")
+        App.replace_valutes()
+        update_cost()
     }
 
     @IBAction func add_aud(_ sender: UIButton) {
@@ -230,8 +235,9 @@ class convert: UIViewController{
         button_1.change_text(text: "AUD")
         button_1.change_text2(text: "Австралийский доллар")
         Scroll1.isHidden = true
-        update_cost()
         convert.defaults.set(valute1, forKey: "valute1")
+        App.replace_valutes()
+        update_cost()
     }
 
     @IBAction func add_cad(_ sender: UIButton) {
@@ -240,8 +246,9 @@ class convert: UIViewController{
         button_1.change_text(text: "CAD")
         button_1.change_text2(text: "Канадский доллар")
             Scroll1.isHidden = true
-        update_cost()
         convert.defaults.set(valute1, forKey: "valute1")
+        App.replace_valutes()
+        update_cost()
     }
     
     @IBAction func add_chf(_ sender: UIButton) {
@@ -249,9 +256,10 @@ class convert: UIViewController{
         self.flag1.image = UIImage(named: self.valute1)
         button_1.change_text(text: "CHF")
         button_1.change_text2(text: "Швейцарский франк")
-            Scroll1.isHidden = true
-        update_cost()
+        Scroll1.isHidden = true
         convert.defaults.set(valute1, forKey: "valute1")
+        App.replace_valutes()
+        update_cost()
     }
     
     @IBAction func add_cny(_ sender: UIButton) {
@@ -260,9 +268,9 @@ class convert: UIViewController{
         button_1.change_text(text: "CNY")
         button_1.change_text2(text: "Китайский юань")
         Scroll1.isHidden = true
-        update_cost()
         convert.defaults.set(valute1, forKey: "valute1")
-
+        App.replace_valutes()
+        update_cost()
     }
     @IBAction func add_czk(_ sender: UIButton){
         self.valute1 = "CZK"
@@ -270,8 +278,9 @@ class convert: UIViewController{
         button_1.change_text(text: "CZK")
         button_1.change_text2(text: "Чешская крона")
         Scroll1.isHidden = true
-        update_cost()
         convert.defaults.set(valute1, forKey: "valute1")
+        App.replace_valutes()
+        update_cost()
 
     }
     @IBAction func add_gbp(_ sender: UIButton) {
@@ -280,8 +289,9 @@ class convert: UIViewController{
         flag1.image = UIImage(named: valute1)
         button_1.change_text(text: "GBP")
         button_1.change_text2(text: "Фунт стерлингов")
-        update_cost()
         convert.defaults.set(valute1, forKey: "valute1")
+        App.replace_valutes()
+        update_cost()
     }
     @IBAction func add_nok(_ sender: UIButton) {
         self.valute1 = "NOK"
@@ -289,8 +299,9 @@ class convert: UIViewController{
         Scroll1.isHidden = true
         button_1.change_text(text: "NOK")
         button_1.change_text2(text: "Норвежская крона")
-        update_cost()
         convert.defaults.set(valute1, forKey: "valute1")
+        App.replace_valutes()
+        update_cost()
     }
     
     @IBAction func add_sek(_ sender: UIButton) {
@@ -299,8 +310,9 @@ class convert: UIViewController{
         Scroll1.isHidden = true
         button_1.change_text2(text: "Шведская крона")
         button_1.change_text(text: "SEK")
-        update_cost()
         convert.defaults.set(valute1, forKey: "valute1")
+        App.replace_valutes()
+        update_cost()
 
     }
     @IBAction func inst_valute1(_ sender: Any) {
@@ -313,8 +325,9 @@ class convert: UIViewController{
         button_2.change_text(text: "RUB")
         button_2.change_text2(text: "Российский рубль")
         Scroll2.isHidden = true
-        update_cost()
         convert.defaults.set(valute2, forKey: "valute2")
+        App.replace_valutes()
+        update_cost()
     }
     
     @IBAction func add_jpy2(_ sender: UIButton) {
@@ -323,8 +336,9 @@ class convert: UIViewController{
         button_2.change_text(text: "JPY")
         button_2.change_text2(text: "Японская иена")
         Scroll2.isHidden = true
-        update_cost()
         convert.defaults.set(valute2, forKey: "valute2")
+        App.replace_valutes()
+        update_cost()
     }
     
     @IBAction func add_usd2(_ sender: UIButton) {
@@ -333,8 +347,9 @@ class convert: UIViewController{
         button_2.change_text(text: "USD")
         button_2.change_text2(text: "Американский доллар")
         Scroll2.isHidden = true
-        update_cost()
         convert.defaults.set(valute2, forKey: "valute2")
+        App.replace_valutes()
+        update_cost()
     }
     
     @IBAction func add_eur2(_ sender: UIButton) {
@@ -343,8 +358,9 @@ class convert: UIViewController{
         button_2.change_text(text: "EUR")
         button_2.change_text2(text: "Евро")
         Scroll2.isHidden = true
-        update_cost()
         convert.defaults.set(valute2, forKey: "valute2")
+        App.replace_valutes()
+        update_cost()
     }
     @IBAction func add_aud2(_ sender: UIButton) {
         self.valute2 = "AUD"
@@ -352,8 +368,9 @@ class convert: UIViewController{
         button_2.change_text(text: "AUD")
         button_2.change_text2(text: "Австралийский доллар")
         Scroll2.isHidden = true
-        update_cost()
         convert.defaults.set(valute2, forKey: "valute2")
+        App.replace_valutes()
+        update_cost()
     }
     @IBAction func add_cad2(_ sender: UIButton) {
         self.valute2 = "CAD"
@@ -361,8 +378,9 @@ class convert: UIViewController{
         button_2.change_text(text: "CAD")
         button_2.change_text2(text: "Канадский доллар")
             Scroll2.isHidden = true
-        update_cost()
         convert.defaults.set(valute2, forKey: "valute2")
+        App.replace_valutes()
+        update_cost()
     }
     
     @IBAction func add_chf2(_ sender: UIButton) {
@@ -371,8 +389,9 @@ class convert: UIViewController{
         button_2.change_text(text: "CHF")
         button_2.change_text2(text: "Швейцарский франк")
             Scroll2.isHidden = true
-        update_cost()
         convert.defaults.set(valute2, forKey: "valute2")
+        App.replace_valutes()
+        update_cost()
     }
     
     @IBAction func add_cny2(_ sender: UIButton) {
@@ -381,8 +400,9 @@ class convert: UIViewController{
         button_2.change_text(text: "CNY")
         button_2.change_text2(text: "Китайский юань")
         Scroll2.isHidden = true
-        update_cost()
         convert.defaults.set(valute2, forKey: "valute2")
+        App.replace_valutes()
+        update_cost()
     }
     @IBAction func add_czk2(_ sender: UIButton){
         self.valute2 = "CZK"
@@ -390,8 +410,9 @@ class convert: UIViewController{
         button_2.change_text(text: "CZK")
         button_2.change_text2(text: "Чешская крона")
         Scroll2.isHidden = true
-        update_cost()
         convert.defaults.set(valute2, forKey: "valute2")
+        App.replace_valutes()
+        update_cost()
     }
     @IBAction func add_gbp2(_ sender: UIButton){
         Scroll2.isHidden = true
@@ -399,8 +420,9 @@ class convert: UIViewController{
         flag2.image = UIImage(named: valute2)
         button_2.change_text(text: "GBP")
         button_2.change_text2(text: "Фунт стерлингов")
-        update_cost()
         convert.defaults.set(valute2, forKey: "valute2")
+        App.replace_valutes()
+        update_cost()
     }
     @IBAction func add_nok2(_ sender: UIButton) {
         self.valute2 = "NOK"
@@ -408,8 +430,9 @@ class convert: UIViewController{
         Scroll2.isHidden = true
         button_2.change_text(text: "NOK")
         button_2.change_text2(text: "Норвежская крона")
-        update_cost()
         convert.defaults.set(valute2, forKey: "valute2")
+        App.replace_valutes()
+        update_cost()
     }
     
     @IBAction func add_sek2(_ sender: UIButton) {
@@ -418,8 +441,9 @@ class convert: UIViewController{
         Scroll2.isHidden = true
         button_2.change_text2(text: "Шведская крона")
         button_2.change_text(text: "SEK")
-        update_cost()
         convert.defaults.set(valute2, forKey: "valute2")
+        App.replace_valutes()
+        update_cost()
 
     }
     @IBAction func inst_valute_1(_ sender: Any) {
